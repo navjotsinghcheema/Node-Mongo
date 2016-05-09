@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="http://d3js.org/d3.v3.min.js">  //referencing d3.js library
+    </script>
+  </head>
+  <body>
+
+    <script>
+
+    var dataArray = [30,40,50,60]; //this range is called domain in d3
+    var width = 500;
+    var height =  500;
+
+    var widthscale = d3.scale.linear()
+                        .domain([0,60])
+                        .range([0,width]);
+
+    var color = d3.scale.linear()
+                        .domain([0,60])
+                        .range(["blue","red"]);
+
+
+    var axis = d3.svg.axis()
+                      .ticks(5)
+                      .scale(widthscale);
+
+    var canvas = d3.select("body")
+                    .append("svg")
+                    .attr("width",width)
+                    .attr("height",height)
+                    .append("g")
+                    .attr("transform","translate(20,0)")
+                    // .call(axis);
+
+
+
+
+    var bars = canvas.selectAll("rect")
+                      .data(dataArray)
+                      .enter()
+                          .append("rect")
+                          .attr("width",function(d) {return widthscale(d);})
+                          .attr("height",50)
+                          .attr("fill",function(d) {return color(d);})
+                          .attr("y",function(d,i){return i*100});//d is data i is index
+
+
+canvas.append("g")
+      .attr("transform","translate(0,400)")
+      .call(axis);
+
+      </script>
+
+  </body>
+</html>
