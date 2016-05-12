@@ -1,0 +1,57 @@
+/*
+
+My Custom CSS
+=============
+
+Author:  Brad Hussey
+Updated: August 2013
+Notes:	 Hand coded for Udemy.com
+
+*/
+body{
+  background-color: #F7F4F3;
+
+
+}
+
+body{
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+
+}
+
+/* --------------------------------------
+   Carousel
+   -------------------------------------- */
+#myCarousel{
+  margin-top: 60px;
+  width: 1300px;
+  height: 500px;
+}
+
+
+.carousel-caption{
+  font-size: 20px;
+  color: black;
+}
+.carousel-caption h4{
+  font-size: 28px;
+}
+
+}
+
+/* --------------------------------------
+   Global Styles
+   -------------------------------------- */
+
+/*#photo-col-6{
+  background-image: url("images/col-6.jpg");
+}*/
+
+/* --------------------------------------
+   Media Queries
+   -------------------------------------- */
+
+/* Portrait & landscape phone */
+
+/* by default size of width between 768px and 1200px is medium image */

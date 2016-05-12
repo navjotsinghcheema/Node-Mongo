@@ -1,0 +1,72 @@
+[
+  {
+    "Type": "031A",
+    "case": "ARMED: HANDGUN",
+    "count": 598
+  },
+  {
+    "Type": "031B",
+    "case": "ARMED: OTHER FIREARM",
+    "count": 7
+  },
+  {
+    "Type": "0325",
+    "case": "VEHICULAR HIJACKING",
+    "count": 53
+  },
+  {
+    "Type": "0326",
+    "case": "AGGRAVATED VEHICULAR HIJACKING",
+    "count": 105
+  },
+  {
+    "Type": "0313",
+    "case": "ARMED: OTHER DANGEROUS WEAPON",
+    "count": 91
+  },
+  {
+    "Type": "0334",
+    "case": "ATTEMPT: ARMED-KNIFE/CUT INSTR",
+    "count": 21
+  },
+  {
+    "Type": "0312",
+    "case": "ARMED:KNIFE/CUTTING INSTRUMENT",
+    "count": 97
+  },
+  {
+    "Type": "0320",
+    "case": "STRONGARM - NO WEAPON",
+    "count": 675
+  },
+  {
+    "Type": "0340",
+    "case": "ATTEMPT: STRONGARM-NO WEAPON",
+    "count": 74
+  },
+  {
+    "Type": "0331",
+    "case": "ATTEMPT: AGGRAVATED",
+    "count": 7
+  },
+  {
+    "Type": "033A",
+    "case": "ATTEMPT: ARMED-HANDGUN",
+    "count": 52
+  },
+  {
+    "Type": "0337",
+    "case": "ATTEMPT: ARMED-OTHER DANG WEAP",
+    "count": 17
+  },
+  {
+    "Type": "033B",
+    "case": "ATTEMPT: ARMED-OTHER FIREARM",
+    "count": 6
+  },
+  {
+    "Type": "0330",
+    "case": "AGGRAVATED",
+    "count": 90
+  }
+]

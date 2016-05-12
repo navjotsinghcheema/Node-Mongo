@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="http://d3js.org/d3.v3.min.js">  //referencing d3.js library
+    </script>
+    <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <style>
+    .axis path{
+      fill: none;
+      stroke: #777;
+      shape-rendering : crispEdges;
+    }
+
+    .axis text{
+      font-family: Lato;
+      font-size: 13px;
+    }
+
+    /*.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+/*.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}*/
+
+/* Style northward tooltips differently */
+/*.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}*/*/
+
+    </style>
+  </head>
+  <body>
+
+<script>
+    d3.json("india-area.json",function(data){
+      var vis  =  d3.select("body")
+                    .append("svg")
+                    .attr("width",550)
+                    .attr("height",250);
+
+      var  WIDTH = 550,
+          HEIGHT = 250,
+          MARGINS = {
+            top : 20,
+            right : 20,
+            bottom : 20,
+            left : 50
+          };
+
+
+
+
+      var xScale = d3.scale.linear()
+                            .range([MARGINS.left,WIDTH - MARGINS.right])
+                            // .range([0,60])
+                            // .domain([d3.min(data,function(d){return d[0].value.Year;}),d3.max(data,function(d){return d[0].value.Year})]);
+                            .domain([1960,2014]);
+
+      var yScale = d3.scale.linear()
+                            .range([HEIGHT-MARGINS.top,MARGINS.bottom])
+                            // .range([0,60])
+                            // .domain([d3.min(data,function(d){return d[0].value.Value;}),d3.max(data,function(d){return d[0].Value;})]);
+                            // console.log(d3.min(data,function(d){return Value;}));
+                            .domain([d3.min(data,function(d){return d.Value;}),d3.max(data,function(d){return d.Value;})]);
+
+
+      var xAxis = d3.svg.axis()
+                    .scale(xScale);
+
+      var yAxis = d3.svg.axis()
+                    .scale(yScale)
+                    .orient("left");
+
+      vis.append("svg:g")
+          .attr("class","x axis")
+          .attr("transform","translate(0,"+(HEIGHT - MARGINS.bottom) + ")")
+          .call(xAxis)
+          .append("text")
+            .attr("x",520)
+            .attr("y",5)
+            .attr("dy",".71em")
+            // .attr("transform","rotate(-30)")
+            .style("text-anchor","center")
+            .style("font-family","cursive")
+            .text("Year")
+            .attr("margin-left");
+          // .attr("");
+          // .call(yAxis);
+
+      vis.append("svg:g")
+          .attr("class","y axis")
+          .attr("transform","translate("+(MARGINS.left)+",0)")
+          .call(yAxis)
+          .append("text")
+            .attr("y",6)
+            .attr("dy", ".71em")
+            .attr("transform","rotate(-90)")
+            .style("text-anchor","end")
+            .style("font-family","cursive")
+            .text("population(% increase)");
+
+      // var tip = d3.tip()
+      //             .attr('class','d3-tip')
+      //             .offset([-10,0])
+      //             .html(function(d){
+      //               return "<strong>Year:</strong><span>+d.Year+</span>";
+                  // });
+
+      // vis.call(tip);
+
+
+
+      var generateArea = d3.svg.area()
+                            .x (function(d){
+                              return xScale(d.Year);
+                            })
+                            .y0 (HEIGHT-20)
+                            .y1 (function(d){
+                              return yScale(d.Value);
+                            });
+                            // interpolate("basis");
+      vis.append('svg:path')
+          .attr('d',generateArea(data))
+          .attr("stroke","green")
+          .attr("fill","steelblue");
+          // .range(["stealblue","green"]);
+
+      vis.selectAll('g.generator')
+          .data([data])
+          .enter().append("svg:cicle")
+          .attr("cx",function(d){return xScale(d.Year);})
+          .attr("cy",function(d){return yScale(d3.Value);})
+          .attr('r',function(d){return 4;})
+
+    });
+
+</script>
+  </body>
+</html>

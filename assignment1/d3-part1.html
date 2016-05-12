@@ -20,6 +20,17 @@
                               .range([0,height]);
 
 
+        var xScale = d3.scale.linear()
+                              .range([MARGINS.left,WIDTH - MARGINS.right])
+                              .domain([d3.min(data,function(d){return d[0].value.Year;}),d3.max(data,function(d){return d[0].value.Year})]);
+
+        var yScale = d3.scale.linear()
+                              .range([HEIGHT-MARGINS.top,MARGINS.bottom])
+                              .domain([d3.min(data,function(d){return d[0].value.Value;}),d3.max(data,function(d){return d[0].Value;})]);
+
+        
+
+
         var canvas = d3.select("body")
                         .append("svg")
                         .attr("width",width)
